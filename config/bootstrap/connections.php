@@ -14,7 +14,7 @@ Connections::add('default', array(
 	'database' => 'orchestra_b6b4419a_a3b0e',
 	'login' => 'b6b4419a',
 	'password' => 'olqohu2dhvard1814mahh3lelr',
-	'timeout' => 300
+	'timeout' => false
 ));
 
 // Connections::add('default', array(
