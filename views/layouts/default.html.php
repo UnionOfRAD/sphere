@@ -99,7 +99,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		<p class="copyright">&copy; 2010 and beyond, <?php echo $this->html->link('the union of rad', 'http://union-of-rad.org/'); ?>
+		<p class="copyright">&copy; 2011 and beyond, <?php echo $this->html->link('the union of rad', 'http://union-of-rad.org/'); ?>
 		&nbsp; ▴ &nbsp;
 		powered by <?php echo $this->html->link('lithium', 'http://lithify.me'); ?>,
 		<?php echo $this->html->link('mongodb', 'http://mongodb.org'); ?>
