@@ -10,10 +10,10 @@ use lithium\data\Connections;
 
 Connections::add('default', array(
 	'type' => 'MongoDb',
-	'host' => 'flame.mongohq.com:27094',
-	'database' => 'orchestra_mongo_33268d7b',
-	'login' => 'orchestra',
-	'password' => '635eb212ca173a1d53a64316f1035523',
+	'host' => 'dbh35.mongolab.com:27357',
+	'database' => 'orchestra_b6b4419a_a3b0e',
+	'login' => 'b6b4419a',
+	'password' => 'olqohu2dhvard1814mahh3lelr',
 	'timeout' => 300
 ));
 
