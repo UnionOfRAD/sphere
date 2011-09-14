@@ -5,13 +5,10 @@
  * @copyright     Copyright 2011, Union of RAD (http://union-of-rad.org)
  * @license       http://www.opensource.org/licenses/MIT The MIT License
  */
-
-use lithium\data\Connections;
-
-Connections::add('li3_users', array(
-	'adapter' => 'MongoDb',
-	'host' => 'localhost',
-	'database' => 'li3_users'
-));
-
 ?>
+
+<?php if (!$resetting) { ?>
+	<h1>forgot your password?</h1>
+<?php } else { ?>
+	<h1>let's reset your password</h1>
+<?php } else { ?>
