@@ -6,12 +6,10 @@
  * @license       http://www.opensource.org/licenses/MIT The MIT License
  */
 
-use lithium\data\Connections;
+use li3_swiftmailer\mailer\Transports;
 
-Connections::add('li3_users', array(
-	'adapter' => 'MongoDb',
-	'host' => 'localhost',
-	'database' => 'li3_users'
-));
+Transports::config(array('default' => array(
+    'adapter' => 'PhpMail'
+)));
 
 ?>
