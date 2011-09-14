@@ -11,7 +11,7 @@
 <head>
 	<?php echo $this->html->charset();?>
 	<title>▴❍ <?php echo $this->title?></title>
-	<?php echo $this->html->style(array('reset', 'base', 'forms', 'polish', 'sphere'));?>
+	<?php echo $this->html->style(array('reset', 'base.css?1', 'forms.css?1', 'polish.css?1', 'sphere.css?1'));?>
 	<?php echo $this->scripts();?>
 	<?php echo $this->html->link('Icon', null, array('type' => 'icon'));?>
 </head>
@@ -246,7 +246,7 @@
 	<?php echo $this->html->script(array(
 		"jquery-1.6.2.min",
 		"jquery.xdomainajax",
-		"sphere",
+		"sphere.js?1",
 		"jquery.oembed.2",
 		"pretty.date",
 		// "showdown/showdown",
