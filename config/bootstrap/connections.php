@@ -13,14 +13,18 @@ use lithium\data\Connections;
  */
 Connections::add('default', array(
 	'adapter' => 'MongoDb',
-	'host' => 'localhost',
-	'database' => 'lithosphere'
+	'host' => 'dbh34.mongolab.com:27437/orchestra_7fe32b26_dae1e',
+	'database' => 'posts',
+	'login' => '7fe32b26',
+	'password' => 'mofa7b9m641mdh379abfsukd3v',
 ));
 
 Connections::add('test', array(
 	'adapter' => 'MongoDb',
-	'host' => 'localhost',
-	'database' => 'test'
+	'host' => 'dbh34.mongolab.com:27437/orchestra_7fe32b26_dae1e',
+	'database' => 'testing',
+	'login' => '7fe32b26',
+	'password' => 'mofa7b9m641mdh379abfsukd3v',
 ));
 
 /**
@@ -28,8 +32,10 @@ Connections::add('test', array(
  */
 Connections::add('li3_users', array(
 	'adapter' => 'MongoDb',
-	'host' => 'localhost',
-	'database' => 'li3_users'
+	'host' => 'dbh34.mongolab.com:27437/orchestra_7fe32b26_dae1e',
+	'database' => 'labrats',
+	'login' => '7fe32b26',
+	'password' => 'mofa7b9m641mdh379abfsukd3v',
 ));
 
 ?>
