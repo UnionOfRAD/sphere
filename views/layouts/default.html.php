@@ -10,8 +10,8 @@
 <html>
 <head>
 	<?php echo $this->html->charset();?>
-	<title>▴❍ <?php echo $this->title?></title>
-	<?php echo $this->html->style(array('reset', 'base', 'forms', 'polish', 'sphere'));?>
+	<title>#li3 > ▴❍ > <?php echo $this->title?></title>
+	<?php echo $this->html->style(array('reset', 'base.css?1', 'forms.css?1', 'polish.css?1', 'sphere.css?1'));?>
 	<?php echo $this->scripts();?>
 	<?php echo $this->html->link('Icon', null, array('type' => 'icon'));?>
 </head>
@@ -21,10 +21,10 @@
 		<h2><?php echo $this->html->link('power of community', '/');?></h2>
 		<div class="nav account">
 			<?php
-				if ($user = $this->user->session()) {
+				if ($session = $this->user->session()) {
 					echo $this->html->image(
-						'http://gravatar.com/avatar/' . md5($user['email']) . '?s=16',
-						array('title' => $user['_id'])
+						'http://gravatar.com/avatar/' . md5($session['email']) . '?s=16',
+						array('title' => $session['_id'])
 					);
 					echo $this->html->link('logout', array(
 						'controller' => 'users', 'action' => 'logout'
@@ -233,12 +233,20 @@
 		</div>
 	</div>
 	<div class="footer">
-		<p class="copyright">&copy; 2010 and beyond, <?php echo $this->html->link('the union of rad', 'http://union-of-rad.org/'); ?> &nbsp; ▴ &nbsp; powered by <?php echo $this->html->link('lithium', 'http://lithify.me'); ?> and <?php echo $this->html->link('mongodb', 'http://mongodb.org'); ?> &nbsp; ▴ &nbsp; <?php echo $this->html->link('open source', 'http://github.com/pointlessjon/sphere'); ?> &nbsp; ▴ &nbsp; <?php echo $this->html->link('@lithified', 'http://twitter.com/lithified'); ?></p>
+		<p class="copyright">&copy; 2011 and beyond, <?php echo $this->html->link('the union of rad', 'http://union-of-rad.org/'); ?>
+		&nbsp; ▴ &nbsp;
+		powered by <?php echo $this->html->link('lithium', 'http://lithify.me'); ?>,
+		<?php echo $this->html->link('mongodb', 'http://mongodb.org'); ?>
+		and <?php echo $this->html->link('orchestra', 'http://orchestra.io'); ?>
+		&nbsp; ▴ &nbsp;
+		<?php echo $this->html->link('open source', 'http://github.com/pointlessjon/sphere'); ?>
+		&nbsp; ▴ &nbsp;
+		<?php echo $this->html->link('@lithified', 'http://twitter.com/lithified'); ?></p>
 	</div>
 	<?php echo $this->html->script(array(
 		"jquery-1.6.2.min",
 		"jquery.xdomainajax",
-		"sphere",
+		"sphere.js?1",
 		"jquery.oembed.2",
 		"pretty.date",
 		// "showdown/showdown",

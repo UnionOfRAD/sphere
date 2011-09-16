@@ -6,6 +6,8 @@
  * @license       http://opensource.org/licenses/bsd-license.php The BSD License
  */
 
+date_default_timezone_set('America/Los_Angeles');
+
 /**
  * This is the primary bootstrap file of your application, and is loaded immediately after the front
  * controller (`webroot/index.php`) is invoked. It includes references to other feature-specific
@@ -30,6 +32,9 @@
  * file also statically loads common classes to improve bootstrap performance.
  */
 require __DIR__ . '/bootstrap/libraries.php';
+
+/* Add Orchestra Configuration */
+require __DIR__ . '/bootstrap/orchestra.php';
 
 /**
  * The error configuration allows you to use the filter system along with the advanced matching

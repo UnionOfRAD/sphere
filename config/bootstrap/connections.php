@@ -27,9 +27,6 @@ Connections::add('test', array(
 	'password' => 'mofa7b9m641mdh379abfsukd3v',
 ));
 
-/**
- * Users Collection
- */
 Connections::add('li3_users', array(
 	'adapter' => 'MongoDb',
 	'host' => 'dbh43.mongolab.com:27437',
