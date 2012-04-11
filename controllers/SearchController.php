@@ -102,7 +102,7 @@ class SearchController extends \lithium\action\Controller {
 			 $page = $this->request->params['page'];
 		}
 
-		$start = strtotime("last month");
+		$start = strtotime("last year");
 		$end = time();
 		$created = array(
 			'$gte' => new \MongoDate($start),
