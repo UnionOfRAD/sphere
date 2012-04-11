@@ -10,7 +10,6 @@ class Post extends \lithium\data\Model {
 	);
 
 	protected $_meta = array(
-		'source' => 'lithosphere',
 		'locked' => false
 	);
 
