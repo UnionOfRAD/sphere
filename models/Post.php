@@ -10,7 +10,6 @@ class Post extends \lithium\data\Model {
 	);
 
 	protected $_meta = array(
-		'source' => 'lithosphere',
 		'locked' => false
 	);
 
@@ -100,7 +99,6 @@ class Post extends \lithium\data\Model {
 					&& $user = $classes['session']::read('user', array('name' => 'li3_user'))
 				) {
 					$params['entity']->user_id = $user['_id'];
-					$params['entity']->user_id = $user['_id'];
 				}
 			}
 
@@ -142,8 +140,9 @@ class Post extends \lithium\data\Model {
 		$comment = $comment::create($data);
 
 		if (empty($record->_id) || !$comment->save()) {
-			return null;
+			return false;
 		}
+
 		$data = $comment->data();
 		$comments = !empty($record->comments) ? $record->comments->data() : array();
 

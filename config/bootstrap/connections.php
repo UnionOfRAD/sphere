@@ -8,9 +8,6 @@
 
 use lithium\data\Connections;
 
-/**
- * Default collection, primarily Posts
- */
 Connections::add('default', array(
 	'adapter' => 'MongoDb',
 	'host' => 'dbh43.mongolab.com:27437',
@@ -21,10 +18,8 @@ Connections::add('default', array(
 
 Connections::add('test', array(
 	'adapter' => 'MongoDb',
-	'host' => 'dbh43.mongolab.com:27437/orchestra_7fe32b26_dae1e',
-	'database' => 'testing',
-	'login' => '7fe32b26',
-	'password' => 'mofa7b9m641mdh379abfsukd3v',
+	'host' => 'localhost',
+	'database' => 'lithosphere-testing',
 ));
 
 Connections::add('li3_users', array(

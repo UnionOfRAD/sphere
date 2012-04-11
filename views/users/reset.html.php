@@ -28,7 +28,7 @@ if ($errors) {
 
 <?php if (!$cooldown && $resetting && !$success) {
 	echo $this->form->create();
-	echo $this->form->field('_id', array('label' => 'User ID'));
+	echo $this->form->field('_id', array('label' => 'Username'));
 	echo $this->form->field('password', array('type' => 'password'));
 	echo $this->form->submit('save');
 	echo $this->form->end();
@@ -37,7 +37,7 @@ if ($errors) {
 <?php if (!$cooldown && !$resetting && !$success) {
 	if (!$emailed) {
 		echo $this->form->create();
-		echo $this->form->field('_id', array('label' => 'User ID'));
+		echo $this->form->field('_id', array('label' => 'Username'));
 		echo $this->form->submit('email token');
 		echo $this->form->end();
 	} else {
