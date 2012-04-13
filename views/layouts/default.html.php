@@ -11,11 +11,7 @@
 <head>
 	<?php echo $this->html->charset();?>
 	<title>#li3 > ▴❍ > <?php echo $this->title?></title>
-<<<<<<< HEAD
 	<?php echo $this->html->style(array('reset', 'base.css?1', 'forms.css?1', 'polish.css?1', 'sphere.css?1'));?>
-=======
-	<?php echo $this->html->style(array('reset', 'base', 'forms', 'polish', 'sphere'));?>
->>>>>>> master
 	<?php echo $this->scripts();?>
 	<?php echo $this->html->link('Icon', null, array('type' => 'icon'));?>
 </head>
