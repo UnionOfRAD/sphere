@@ -12,11 +12,16 @@
  */
 use lithium\storage\Session;
 
+$redis = array(
+	'session.save_handler' => 'redis',
+	'session.save_path' => 'tcp://4cfbe0439d177feda6e7390e1f14fce1@drum.redistogo.com:9148'
+);
+
 Session::config(array(
 	'cookie' => array('adapter' => 'Cookie'),
-	'li3_user' => array('adapter' => 'Php'),
-	'default' => array('adapter' => 'Php'),
-	'cooldown' => array('adapter' => 'Php', 'expires' => 10)
+	'li3_user' => array('adapter' => 'Php') + $redis,
+	'default' => array('adapter' => 'Php') + $redis,,
+	'cooldown' => array('adapter' => 'Php', 'expires' => 10) + $redis,
 ));
 
 ?>
