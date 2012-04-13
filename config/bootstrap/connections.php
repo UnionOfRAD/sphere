@@ -14,6 +14,7 @@ Connections::add('default', array(
 	'database' => 'orchestra_7fe32b26_dae1e',
 	'login' => '7fe32b26',
 	'password' => 'mofa7b9m641mdh379abfsukd3v',
+	'timeout' => false
 ));
 
 Connections::add('test', array(
@@ -28,6 +29,7 @@ Connections::add('li3_users', array(
 	'database' => 'orchestra_7fe32b26_dae1e',
 	'login' => '7fe32b26',
 	'password' => 'mofa7b9m641mdh379abfsukd3v',
+	'timeout' => false
 ));
 
 ?>
