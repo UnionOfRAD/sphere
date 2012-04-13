@@ -21,8 +21,9 @@
 
 <?php
 echo $this->form->create();
-echo $this->form->field('_id', array('label' => 'Username'));
 echo $this->form->field('email');
+echo $this->form->field('_id', array('label' => 'Username'));
+echo $this->form->field('password', array('type' => 'password'));
 echo $this->form->submit('save');
 echo $this->form->end();
 ?>
