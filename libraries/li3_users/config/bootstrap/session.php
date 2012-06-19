@@ -19,7 +19,7 @@ Auth::config(array(
 			)
 		),
 		'adapter' => 'Form',
-		'model' => '\li3_users\models\User',
+		'model' => '\li3_users\models\Users',
 		'fields' => array('_id', 'password'),
 		'validators' => array(
 			'password' => function($submitted, $actual) {

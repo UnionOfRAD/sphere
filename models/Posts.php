@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-class Post extends \lithium\data\Model {
+class Posts extends \lithium\data\Model {
 
 	public $validates = array(
 		'title' => array('notEmpty', 'message' => 'Please supply a title.'),
@@ -54,8 +54,8 @@ class Post extends \lithium\data\Model {
 		'inflector'   => 'lithium\util\Inflector',
 		'set'         => 'lithium\data\collection\DocumentSet',
 		'session'     => 'lithium\storage\Session',
-		'user'        => 'li3_users\models\User',
-		'comment'     => 'app\models\Comment',
+		'users'        => 'li3_users\models\Users',
+		'comments'     => 'app\models\Comments',
 	);
 
 	public static function __init(array $options = array()) {
@@ -115,7 +115,7 @@ class Post extends \lithium\data\Model {
 			if (!empty($result->comments)) {
 				$comments = new $classes['set'](array(
 					'data' => $result->comments->data(),
-					'model' => $classes['comment']
+					'model' => $classes['comments']
 				));
 				$result->set(compact('comments'));
 			}
@@ -127,7 +127,7 @@ class Post extends \lithium\data\Model {
 		if (!empty($record->_user)) {
 			return $record->_user;
 		}
-		$user = static::$_classes['user'];
+		$user = static::$_classes['users'];
 		return $record->_user = $user::find($record->user_id);
 	}
 
@@ -136,7 +136,7 @@ class Post extends \lithium\data\Model {
 		$params += $default;
 		extract($params);
 
-		$comment = static::$_classes['comment'];
+		$comment = static::$_classes['comments'];
 		$comment = $comment::create($data);
 
 		if (empty($record->_id) || !$comment->save()) {
@@ -231,7 +231,7 @@ class Post extends \lithium\data\Model {
 		if (!empty($record->comments)) {
 			$comments = new $set(array(
 				'data' => $record->comments->data(),
-				'model' => 'app\models\Comment',
+				'model' => 'app\models\Comments',
 			));
 		}
 		return $comments;

@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-class Comment extends \lithium\data\Model {
+class Comments extends \lithium\data\Model {
 
 	public $validates = array(
 		'content' => array('notEmpty', 'message' => 'Please supply some content.'),

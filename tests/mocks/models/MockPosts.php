@@ -2,7 +2,7 @@
 
 namespace app\tests\mocks\models;
 
-class MockPost extends \app\models\Post {
+class MockPosts extends \app\models\Posts {
 
 	protected $_meta = array(
 		'connection' => 'test',
@@ -10,9 +10,9 @@ class MockPost extends \app\models\Post {
 	);
 
 	protected static $_classes = array(
-		'user'    => 'app\tests\mocks\models\MockUser',
+		'users'    => 'app\tests\mocks\models\MockUsers',
 		'session' => 'app\tests\mocks\extensions\storage\MockSession',
-		'comment' => 'app\tests\mocks\models\MockComment'
+		'comments' => 'app\tests\mocks\models\MockComments'
 	);
 }
 

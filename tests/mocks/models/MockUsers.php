@@ -5,7 +5,7 @@ namespace app\tests\mocks\models;
 use lithium\data\collection\DocumentSet;
 use lithium\data\entity\Document;
 
-class MockUser extends \lithium\data\Model {
+class MockUsers extends \lithium\data\Model {
 
 	protected $_meta = array(
 		'connection' => false,

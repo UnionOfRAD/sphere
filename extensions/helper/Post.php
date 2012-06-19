@@ -42,7 +42,7 @@ class Post extends \lithium\template\Helper {
 		$category = null;
 		if (!empty($post->tags)) {
 			foreach ($post->tags as $tag) {
-				if (!in_array($tag, \app\models\Post::$tags)) {
+				if (!in_array($tag, \app\models\Posts::$tags)) {
 					continue;
 				}
 				$category = $tag;
@@ -118,7 +118,7 @@ class Post extends \lithium\template\Helper {
 
 		$title = String::insert($title, compact('tag'));
 		$url = array('controller' => 'search', 'action' => 'filter') + compact('tag');
-		if (in_array($tag, \app\models\Post::$tags)) {
+		if (in_array($tag, \app\models\Posts::$tags)) {
 			$url = $tag;
 		}
 		$html = $this->_context->helper('html');
