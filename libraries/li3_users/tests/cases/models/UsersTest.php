@@ -11,7 +11,7 @@ namespace li3_users\tests\cases\models;
 use lithium\data\Connections;
 use lithium\data\model\Query;
 
-class User extends \li3_users\models\User {
+class Users extends \li3_users\models\Users {
 
 	protected $_meta = array(
 		'key' => '_id',
@@ -26,12 +26,12 @@ class User extends \li3_users\models\User {
 
 }
 
-class UserTest extends \lithium\test\Unit {
+class UsersTest extends \lithium\test\Unit {
 
 	public function setUp() {}
 
 	public function tearDown() {
-		User::find('all')->each(function($i) {
+		Users::find('all')->each(function($i) {
 			$i->delete();
 		});
 	}
@@ -42,7 +42,7 @@ class UserTest extends \lithium\test\Unit {
 			'email' => 'user@example.com',
 			'password' => 'my_password'
 		);
-		$user = User::create();
+		$user = Users::create();
 		$user->save($data);
 
 		$this->assertTrue(empty($user->token));
@@ -74,28 +74,28 @@ class UserTest extends \lithium\test\Unit {
 			'password' => 'my_password'
 		);
 
-		$result = User::reset();
+		$result = Users::reset();
 		$expected = false;
 		$this->assertEqual($expected, $result);
 
-		$user = User::create();
+		$user = Users::create();
 		$user->save($data);
 
 		$token = $user->token();
 
-		$result = User::reset(compact('token'));
+		$result = Users::reset(compact('token'));
 		$this->assertFalse($result);
 
 		$_id = $data['_id'];
 
-		$result = User::reset(compact('_id'));
+		$result = Users::reset(compact('_id'));
 		$this->assertFalse($result);
 
-		$result = User::reset(compact('token','_id'));
+		$result = Users::reset(compact('token','_id'));
 		$this->assertTrue($result);
 
 		$token = $user->token(strtotime('-15 minutes'));
-		$result = User::reset(compact('token','_id'));
+		$result = Users::reset(compact('token','_id'));
 		$this->assertFalse($result);
 
 	}

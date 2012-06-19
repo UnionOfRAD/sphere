@@ -2,21 +2,21 @@
 
 namespace app\tests\cases\models;
 
-use app\tests\mocks\models\MockPost as Post;
+use app\tests\mocks\models\MockPosts as Posts;
 use lithium\data\Connections;
 use lithium\data\model\Query;
 use lithium\util\Inflector;
 
-class PostTest extends \lithium\test\Unit {
+class PostsTest extends \lithium\test\Unit {
 
 	public function setUp() {}
 
 	public function tearDown() {
-		Post::all()->delete();
+		Posts::all()->delete();
 	}
 
 	public function testSave() {
-		$post = Post::create(array('title' => 'the title', 'content' => 'the content'));
+		$post = Posts::create(array('title' => 'the title', 'content' => 'the content'));
 		$expected = Inflector::slug($post->title);
 		$save = $post->save();
 		$result = strstr($post->_id, $expected);
@@ -25,21 +25,21 @@ class PostTest extends \lithium\test\Unit {
 		$data = $post->data();
 		unset($data['_id']);
 
-		$new = Post::create($data);
+		$new = Posts::create($data);
 		$new->save($data);
 		$this->assertNotEqual($post->_id, $new->_id);
 
 		$expected = $content = 'updated content';
 		$post->save(compact('content'));
-		$post = Post::first($post->_id);
+		$post = Posts::first($post->_id);
 		$this->assertEqual($expected, $post->content);
 
-		$post = Post::create(array('title' => 'sm', 'content' => 'title too short'));
+		$post = Posts::create(array('title' => 'sm', 'content' => 'title too short'));
 		$title = $post->title;
 		$post->save();
 		$this->assertNotEqual($title, $post->_id);
 
-		$post = Post::create(array(
+		$post = Posts::create(array(
 			'title' => 'test',
 			'content' => 'testing tags',
 			'tags' => 'one,Tag Two, ∆three, '
@@ -54,7 +54,7 @@ class PostTest extends \lithium\test\Unit {
 		$result = $post->user_id;
 		$this->assertEqual($expected, $result);
 
-		$post = Post::create(array(
+		$post = Posts::create(array(
 			'title' => 'forcing user id',
 			'content' => 'shtuff',
 			'user_id' => 'lithosphere'
@@ -67,7 +67,7 @@ class PostTest extends \lithium\test\Unit {
 	}
 
 	public function testPostUser() {
-		$post = Post::create(array(
+		$post = Posts::create(array(
 			'title' => 'my title',
 			'content' => 'jurassic park 3 sucked'
 		));
@@ -85,7 +85,7 @@ class PostTest extends \lithium\test\Unit {
 		$result = $user->_id;
 		$this->assertEqual($expected, $result);
 
-		$post = Post::create(array(
+		$post = Posts::create(array(
 			'title' => 'new title',
 			'content' => 'titanic 2 was ok',
 			'user_id' => 'gwoo'
@@ -97,7 +97,7 @@ class PostTest extends \lithium\test\Unit {
 		$result = $user->_id;
 		$this->assertEqual($expected, $result);
 
-		$post = Post::create(array(
+		$post = Posts::create(array(
 			'title' => 'how i do this?',
 			'content' => 'LOL',
 			'user_id' => 'mork'
@@ -115,7 +115,7 @@ class PostTest extends \lithium\test\Unit {
 			'_id' => 'gwoo',
 			'email' => 'gwoo@example.com'
 		);
-		$post = Post::create(array('title' => 'another title', 'content' => 'the content'));
+		$post = Posts::create(array('title' => 'another title', 'content' => 'the content'));
 		$post->save();
 
 		$data = array('content' => 'cool') + compact('user');
@@ -211,7 +211,7 @@ class PostTest extends \lithium\test\Unit {
 
 	public function testEndorsePost() {
 
-		$post = Post::create(array(
+		$post = Posts::create(array(
 			'title' => 'another title',
 			'content' => 'the content',
 			'user_id' => 'albert'
@@ -274,7 +274,7 @@ class PostTest extends \lithium\test\Unit {
 	}
 
 	public function testEndorseComment() {
-		$post = Post::create(array(
+		$post = Posts::create(array(
 			'title' => 'another title',
 			'content' => 'the content',
 			'user_id' => 'albert'
@@ -416,7 +416,7 @@ class PostTest extends \lithium\test\Unit {
 	}
 
 	public function testRating() {
-		$post = Post::create(array('title' => 'unrated', 'content' => '[REDACTED]'));
+		$post = Posts::create(array('title' => 'unrated', 'content' => '[REDACTED]'));
 	}
 }
 

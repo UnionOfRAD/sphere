@@ -21,12 +21,12 @@ Validator::add('uniqueUserValue', function ($value, $format, $options) {
 			}
 			$conditions['_id'] = array('$ne' => $options['values']['_id']);
 		}
-		return !(boolean) User::find('count', compact('conditions'));
+		return !(boolean) Users::find('count', compact('conditions'));
 	}
 	return false;
 });
 
-class User extends \lithium\data\Model {
+class Users extends \lithium\data\Model {
 
 	protected $_meta = array(
 		'key' => '_id',

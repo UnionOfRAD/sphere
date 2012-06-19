@@ -8,7 +8,7 @@
 
 namespace li3_users\controllers;
 
-use li3_users\models\User;
+use li3_users\models\Users;
 use lithium\security\Auth;
 use lithium\storage\Session;
 use li3_swiftmailer\mailer\Transports;
@@ -22,7 +22,7 @@ class UsersController extends \lithium\action\Controller {
 	protected $_cooldown = 6;
 
 	public function index() {
-		$users = User::all();
+		$users = Users::all();
 		return compact('users');
 	}
 
@@ -70,14 +70,14 @@ class UsersController extends \lithium\action\Controller {
 	}
 
 	public function view($_id = null) {
-		$user = User::find($_id);
+		$user = Users::find($_id);
 		return compact('user');
 	}
 
 	public function register() {
 		$errors = false;
 		if (!empty($this->request->data)) {
-			$user = User::create($this->request->data);
+			$user = Users::create($this->request->data);
 			if ($user->save()) {
 				Session::write('attempts', 0, array('name' => 'cooldown'));
 				return $this->redirect(array(
@@ -87,13 +87,13 @@ class UsersController extends \lithium\action\Controller {
 			$errors = $user->errors();
 		}
 		if (empty($user)) {
-			$user = User::create();
+			$user = Users::create();
 		}
 		return compact('user', 'errors');
 	}
 
 	public function edit($_id = null) {
-		$user = User::find($_id);
+		$user = Users::find($_id);
 		if (empty($user)) {
 			$this->redirect(array('controller' => 'users', 'action' => 'index'));
 		}
@@ -127,8 +127,8 @@ class UsersController extends \lithium\action\Controller {
 			$title = "update your password";
 			if (!empty($this->request->data['_id']) && !empty($this->request->data['password'])) {
 				$_id = $this->request->data['_id'];
-				if (User::reset(compact('token','_id'))) {
-					$user = User::first($this->request->data['_id']);
+				if (Users::reset(compact('token','_id'))) {
+					$user = Users::first($this->request->data['_id']);
 					$user->set(array('password' => $this->request->data['password']));
 					$success = $user->save();
 					$title = 'password updated!';
@@ -149,7 +149,7 @@ class UsersController extends \lithium\action\Controller {
 		}
 
 		if (empty($token) && !empty($this->request->data['_id'])) {
-			if ($user = User::first($this->request->data['_id'])) {
+			if ($user = Users::first($this->request->data['_id'])) {
 				$user->token();
 				if ($this->_emailToken($user->data())) {
 					$emailed = true;
