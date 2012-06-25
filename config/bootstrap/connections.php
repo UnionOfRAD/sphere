@@ -17,7 +17,7 @@ Connections::add('default', array(
 Connections::add('test', array(
 	'adapter' => 'MongoDb',
 	'host' => 'localhost',
-	'database' => 'test'
+	'database' => 'lithosphere_test'
 ));
 
 Connections::add('li3_users', array(

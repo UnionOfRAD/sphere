@@ -3,7 +3,7 @@
 namespace app\tests\cases\extensions\helper;
 
 use \app\extensions\helper\Thread;
-use \lithium\data\collection\Document;
+use \lithium\data\collection\DocumentSet as Document;
 use \lithium\net\http\Router;
 
 class ThreadTest extends \lithium\test\Unit {
@@ -38,7 +38,7 @@ class ThreadTest extends \lithium\test\Unit {
 			)
 		);
 
-		$document = new Document(array('items' => $data, 'model' => '\app\models\Post'));
+		$document = new Document(array('items' => $data, 'model' => '\app\models\Posts'));
 		$result = $thread->comments($document);
 		$this->assertNull($result);
 
@@ -59,7 +59,7 @@ class ThreadTest extends \lithium\test\Unit {
 			)
 		);
 
-		$document = new Document(array('items' => $data, 'model' => '\app\models\Post'));
+		$document = new Document(array('items' => $data, 'model' => '\app\models\Posts'));
 		$result = $thread->comments($document);
 		$this->assertTrue(!empty($result));
 	}

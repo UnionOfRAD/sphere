@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\Post;
+use app\models\Posts;
 use lithium\storage\Session;
 
 class PostsController extends \lithium\action\Controller {
@@ -15,7 +15,7 @@ class PostsController extends \lithium\action\Controller {
 		}
 		$errors = false;
 		if (!empty($this->request->data)) {
-			$post = Post::create($this->request->data);
+			$post = Posts::create($this->request->data);
 			if ($post->save()) {
 				return $this->redirect(array(
 					'controller' => 'posts', 'action' => 'comment',
@@ -26,20 +26,19 @@ class PostsController extends \lithium\action\Controller {
 			}
 		}
 		if (empty($post)) {
-			$post = Post::create();
+			$post = Posts::create();
 		}
-		$tags = Post::$tags;
+		$tags = Posts::$tags;
 		return compact('post','tags','errors');
 	}
 
 	public function comment() {
 		$user = Session::read('user', array('name' => 'li3_user'));
 
-		$post = Post::first($this->request->params['_id']);
+		$post = Posts::first($this->request->params['_id']);
 		if (empty($post)) {
 			return $this->redirect(array('controller' => 'posts', 'action' => 'index'));
 		}
-		//print_r($post->data()); die();
 
 		$endorsed =
 			($user['_id'] == $post->user_id) ||
@@ -72,7 +71,7 @@ class PostsController extends \lithium\action\Controller {
 			));
 		}
 
-		$post = Post::first($_id);
+		$post = Posts::first($_id);
 		if (empty($post)) {
 			return $this->redirect(array('controller' => 'posts', 'action' => 'index'));
 		}
@@ -86,7 +85,7 @@ class PostsController extends \lithium\action\Controller {
 	}
 
 	public function edit($_id = null) {
-		$post = Post::find($_id);
+		$post = Posts::find($_id);
 		if (empty($post)) {
 			return $this->redirect(array('controller' => 'posts', 'action' => 'index'));
 		}

@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\Post;
+use app\models\Posts;
 
 class SearchController extends \lithium\action\Controller {
 
@@ -28,8 +28,8 @@ class SearchController extends \lithium\action\Controller {
 		$limit = $this->_limit;
 		$offset = ($page - 1) * $limit;
 
-		$count = Post::find('count', compact('conditions'));
-		$results = Post::find('all', compact('conditions','limit','offset'));
+		$count = Posts::find('count', compact('conditions'));
+		$results = Posts::find('all', compact('conditions','limit','offset'));
 		$url = $this->request->params + $data;
 
 		return compact('q','results','count','url','page','limit');
@@ -88,8 +88,8 @@ class SearchController extends \lithium\action\Controller {
 		$limit = $this->_limit;
 		$offset = ($page - 1) * $limit;
 
-		$count = Post::find('count', compact('conditions'));
-		$results = Post::find('all', compact('conditions','order','offset','limit'));
+		$count = Posts::find('count', compact('conditions'));
+		$results = Posts::find('all', compact('conditions','order','offset','limit'));
 
 		$url = $this->request->params;
 
@@ -117,8 +117,8 @@ class SearchController extends \lithium\action\Controller {
 		$limit = $this->_limit;
 		$offset = ($page - 1) * $limit;
 
-		$count = Post::find('count', compact('conditions'));
-		$results = Post::find('all', compact('conditions', 'order','offset','limit'));
+		$count = Posts::find('count', compact('conditions'));
+		$results = Posts::find('all', compact('conditions', 'order','offset','limit'));
 
 		return compact('results','count','url','page','limit');
 	}
