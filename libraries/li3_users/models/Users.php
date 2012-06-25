@@ -15,7 +15,7 @@ Validator::add('uniqueUserValue', function ($value, $format, $options) {
 	$conditions = array();
 	if (!empty($value)) {
 		$conditions[$options['field']] = $value;
-		if ($options['events']['update'] && !empty($options['values']['_id'])) {
+		if ($options['events'] == 'update' && !empty($options['values']['_id'])) {
 			if ($options['field'] == '_id' && $value == $options['values']['_id']) {
 				return true;
 			}
