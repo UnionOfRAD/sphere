@@ -20,7 +20,7 @@ $redis = array(
 Session::config(array(
 	'cookie' => array('adapter' => 'Cookie'),
 	'li3_user' => array('adapter' => 'Php') + $redis,
-	'default' => array('adapter' => 'Php') + $redis,,
+	'default' => array('adapter' => 'Php') + $redis,
 	'cooldown' => array('adapter' => 'Php', 'expires' => 10) + $redis,
 ));
 
