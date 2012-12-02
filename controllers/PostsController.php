@@ -86,18 +86,20 @@ class PostsController extends \lithium\action\Controller {
 
 	public function edit($_id = null) {
 		$post = Posts::find($_id);
-		if (empty($post)) {
+		$user = Session::read('user', array('name' => 'li3_user'));
+
+		if (empty($post) || $post->user_id != $user['_id']) {
 			return $this->redirect(array('controller' => 'posts', 'action' => 'index'));
 		}
 		if (!empty($this->request->data)) {
 			if ($post->save($this->request->data)) {
 				$this->redirect(array(
-					'controller' => 'posts', 'action' => 'view',
-					'args' => array($post->_id)
+					'controller' => 'posts', 'action' => 'comment', '_id' => $post->_id
 				));
 			}
 		}
-		return compact('post');
+		$tags = Posts::$tags;
+		return compact('post', 'tags');
 	}
 }
 

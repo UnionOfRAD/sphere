@@ -25,6 +25,14 @@
 			<?php echo implode(", \n", array_unique($tags)); ?>
 		</span>
 		<?php } ?>
+		<?php
+			$session = $this->user->session();
+			if ($post->user()->_id == $session['_id']) {
+				echo "<span style='clear:right;float:right;display:block; padding: 0 14px;'>";
+				echo $this->html->link('edit', array("Posts::edit", "args" => array($post->_id)));
+				echo "</span>";
+			}
+		?>
 		</aside>
 	</div>
 
