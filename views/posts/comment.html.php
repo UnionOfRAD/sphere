@@ -11,7 +11,9 @@
 			<?php echo $date;?>
 			<span class="timestamp"><?php echo $post->created->sec;?></span>
 		</span>
-		<?php $gravatar = $this->gravatar->url(array('email' => $post->user()->email, 'params' => array('size' => 16))); ?>
+		<?php $gravatar = $this->gravatar->url(array(
+				'email' => $post->user()->email, 'params' => array('size' => 16)
+		)); ?>
 		<span class="post-author" style="background-image:url(<?php echo $gravatar;?>);">
 			<?php echo $this->html->link($post->user()->_id, array('controller' => 'search', 'action' => 'filter', '_id' => $post->user()->_id), array('title' => 'Search for more posts by this author'));?>
 		</span>
@@ -19,7 +21,7 @@
 		<span class="tags">
 		<?php
 			$tags = array();
-		 	foreach ($post->tags as $tag) {
+			foreach ((array) $post->tags as $tag) {
 				$tags[] = $this->post->tag($tag);
 			} ?>
 			<?php echo implode(", \n", array_unique($tags)); ?>

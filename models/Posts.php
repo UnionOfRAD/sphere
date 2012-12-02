@@ -79,22 +79,14 @@ class Posts extends \lithium\data\Model {
 				}
 				$params['entity']->_id = $_id;
 
+				var_dump($_id);
+
 				$params['entity']->created = time();
 
 				$params['entity']->_title = array_filter(array_unique(explode(
 					' ', $params['entity']->title
 				)));
 
-				if (!empty($params['entity']->tags) && is_string($params['entity']->tags)) {
-					$params['entity']->tags = array_unique(array_filter(explode(
-						",", str_replace(' ', '', $params['entity']->tags)
-					)));
-					if (!empty($params['entity']->tags)) {
-						$params['entity']->tags->each(function($v) use ($classes) {
-							return $classes['inflector']::slug($v);
-						});
-					}
-				}
 				if (empty($params['entity']->user_id)
 					&& $user = $classes['session']::read('user', array('name' => 'li3_user'))
 				) {
@@ -105,7 +97,16 @@ class Posts extends \lithium\data\Model {
 			if (!empty($params['entity']->comments) && is_object($params['entity']->comments)) {
 				$params['entity']->comments = $params['entity']->comments->data();
 			}
-
+			if (!empty($params['entity']->tags) && is_string($params['entity']->tags)) {
+				$params['entity']->tags = array_unique(array_filter(explode(
+					",", str_replace(' ', '', $params['entity']->tags)
+				)));
+				if (!empty($params['entity']->tags)) {
+					$params['entity']->tags->each(function($v) use ($classes) {
+						return $classes['inflector']::slug($v);
+					});
+				}
+			}
 			$params['entity']->rating = $params['entity']->rating();
 			return $chain->next($self, $params, $chain);
 		});
