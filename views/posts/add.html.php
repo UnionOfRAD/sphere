@@ -30,7 +30,8 @@
 	</div>
 	<label for="PostTags" class="tags">Tags:</label>
 	<?php echo $this->form->text('tags', array(
-		'id' => 'PostTags',  'value' => ($post->tags) ? join(', ', $post->tags->to('array')) : null
+		'id' => 'PostTags',
+		'value' => (is_object($post->tags)) ? join(', ', $post->tags->to('array')) : null
 	)); ?>
 	<small class="post-notes">separate tags with commas.</small>
 	<?php echo $this->form->submit('save'); ?>

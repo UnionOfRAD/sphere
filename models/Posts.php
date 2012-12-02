@@ -95,15 +95,21 @@ class Posts extends \lithium\data\Model {
 			if (!empty($params['entity']->comments) && is_object($params['entity']->comments)) {
 				$params['entity']->comments = $params['entity']->comments->data();
 			}
-			if (!empty($params['entity']->tags) && is_string($params['entity']->tags)) {
-				$params['entity']->tags = array_unique(array_filter(explode(
-					",", str_replace(' ', '', $params['entity']->tags)
+			$tags = $params['entity']->tags;
+
+			if (!empty($params['data']['tags'])) {
+				$tags = $params['data']['tags'];
+			}
+			if (!empty($tags) && is_string($tags)) {
+				$tags = array_unique(array_filter(explode(
+					",", str_replace(' ', '', $tags)
 				)));
-				if (!empty($params['entity']->tags)) {
-					$params['entity']->tags->each(function($v) use ($classes) {
+				if (!empty($tags)) {
+					$tags = array_map(function($v) use ($classes) {
 						return $classes['inflector']::slug($v);
-					});
+					}, $tags);
 				}
+				$params['data']['tags'] = $params['entity']->tags = $tags;
 			}
 			$params['entity']->rating = $params['entity']->rating();
 			return $chain->next($self, $params, $chain);
