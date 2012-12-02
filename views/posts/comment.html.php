@@ -32,7 +32,7 @@
 
 	<div class="post-content">
 		<?php
-			$content = $this->oembed->classify($h($post->content), array('markdown' => true));
+			$content = $this->oembed->classify($post->content, array('markdown' => true));
 			echo \markdown\Markdown::parse($content);
 		?>
 	</div>
