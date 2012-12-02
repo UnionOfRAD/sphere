@@ -110,7 +110,7 @@ class SearchController extends \lithium\action\Controller {
 		);
 
 		$conditions = compact('created');
-		$order = array('start' => -1);
+		$order = array('created' => -11, 'rating' => -1);
 
 		$url = $this->request->params;
 
