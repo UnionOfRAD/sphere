@@ -79,8 +79,6 @@ class Posts extends \lithium\data\Model {
 				}
 				$params['entity']->_id = $_id;
 
-				var_dump($_id);
-
 				$params['entity']->created = time();
 
 				$params['entity']->_title = array_filter(array_unique(explode(

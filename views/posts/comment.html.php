@@ -21,7 +21,7 @@
 		<span class="tags">
 		<?php
 			$tags = array();
-			foreach ((array) $post->tags as $tag) {
+			foreach ($post->tags as $tag) {
 				$tags[] = $this->post->tag($tag);
 			} ?>
 			<?php echo implode(", \n", array_unique($tags)); ?>
