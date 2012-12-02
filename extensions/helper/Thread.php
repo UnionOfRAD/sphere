@@ -105,7 +105,7 @@ class Thread extends \lithium\template\Helper {
 			}
 
 			$comment['content'] = $oembed->classify(
-				$html->escape($comment['content']), array('markdown' => true)
+				$comment['content'], array('markdown' => true)
 			);
 
 			$comment['content'] = Markdown::parse($comment['content']);
